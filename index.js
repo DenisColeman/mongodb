@@ -542,7 +542,7 @@ exports.connect = function(config, intern, callback) {
     mongoString = 'mongodb://';
   }
 
-  if(config.user !== undefined && config.password !== undefined) {
+  if(config.user !== undefined && config.password !== undefined && config.user !== "dummy" && config.password !== "dummy") {
     // Ensure user and password can contain special characters like "@" so app doesn't throw an exception when connecting to MongoDB
     config.user = encodeURIComponent(config.user);
     config.password = encodeURIComponent(config.password);

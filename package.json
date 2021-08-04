@@ -1,14 +1,17 @@
 {
-  "name": "db-migrate-mongodb-nesto-fork",
-  "version": "2.0.3",
-  "description": "Mongodb driver for db-migrate. This is a fork which updated the mongo dependencies in order to support replica sets with srv records.",
+  "name": "db-migrate-mongodb-custom",
+  "version": "0.0.1",
+  "description": "Mongodb driver for db-migrate. This is a fork which updated the mongo dependencies in order to support replica sets with srv records and extra params.",
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/.bin/vows"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/db-migrate/mongodb.git"
+    "url": "https://github.com/DenisColeman/mongodb.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "db-migrate",
@@ -18,12 +21,12 @@
     "migration",
     "driver"
   ],
-  "author": "Tobias Gurtzick <magic@wizardtales.com>",
+  "author": "WorkCompass Dev Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/db-migrate/mongodb/issues"
+    "url": "https://github.com/DenisColeman/mongodb/issues"
   },
-  "homepage": "https://github.com/db-migrate/mongodb",
+  "homepage": "https://github.com/DenisColeman/mongodb",
   "dependencies": {
     "bluebird": "^3.5.3",
     "db-migrate-base": "^1.5.3",

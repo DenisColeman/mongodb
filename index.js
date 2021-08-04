@@ -211,7 +211,7 @@ var MongodbDriver = Base.extend({
     return this._run('insert', this.internals.seedTable, {name: name, run_on: new Date()})
       .nodeify(callback);
   },
-  
+
   /**
    * Returns the DB instance so custom updates can be made.
    * NOTE: This method exceptionally does not call close() on the database driver when the promise resolves. So the getDbInstance method caller
@@ -527,8 +527,8 @@ exports.connect = function(config, intern, callback) {
     else
       host = parseObjects(config, port, length);
   } else {
-    if(config.port === undefined 
-        && config.useSrvRecord !== undefined 
+    if(config.port === undefined
+        && config.useSrvRecord !== undefined
         && String(config.useSrvRecord) == 'true') {
 
       // port must not be set if protocol is mongo+srv
@@ -539,7 +539,7 @@ exports.connect = function(config, intern, callback) {
   }
 
   var mongoString;
-  
+
   if (config.useSrvRecord !== undefined && String(config.useSrvRecord) == 'true') {
     mongoString = 'mongodb+srv://';
   } else {
@@ -558,7 +558,9 @@ exports.connect = function(config, intern, callback) {
 
   var extraParams = [];
   if (config.ssl) {
-    extraParams.push('ssl=true');
+    extraParams.push(`ssl=true`);
+  } else {
+    extraParams.push(`ssl=false`);
   }
 
   if(config.authSource !== undefined && config.user !== undefined && config.password !== undefined) {
@@ -567,6 +569,10 @@ exports.connect = function(config, intern, callback) {
 
   if (config.replicaSet){
     extraParams.push('replicaSet=' + config.replicaSet);
+  }
+
+  if(config.useUnifiedTopology) {
+    extraParams.push(`useUnifiedTopology=${config.useUnifiedTopology}`)
   }
 
   if(extraParams.length > 0){

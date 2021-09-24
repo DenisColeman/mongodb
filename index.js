@@ -563,6 +563,11 @@ exports.connect = function(config, intern, callback) {
     extraParams.push(`ssl=false`);
   }
 
+  if (config.tlsCAFile) {
+    extraParams.push(`tls=true`);
+    extraParams.push(`tlsCAFile=${config.tlsCAFile}`);
+  }
+
   if(config.authSource !== undefined && config.user !== undefined && config.password !== undefined) {
     extraParams.push('authSource=' + config.authSource);
   }
